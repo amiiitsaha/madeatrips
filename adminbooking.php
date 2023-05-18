@@ -11,7 +11,7 @@ if (isset($_SESSION['aid'])) {
 
     if (isset($_REQUEST['confirm'])) {
         $id = $_POST['confirm'];
-        $up = mysqli_query($con, "update booking set status='confirm' where b_id='$id'");
+        $up = mysqli_query($con, "update booking set booking_status='confirm' where b_id='$id'");
         if ($up) {
             echo "<script>alert('updated successful');</script>";
         } else {
@@ -20,7 +20,20 @@ if (isset($_SESSION['aid'])) {
     }
     if (isset($_REQUEST['cancel'])) {
         $id = $_POST['cancel'];
-        $up = mysqli_query($con, "update booking set status='cancel' where b_id='$id'");
+        $up = mysqli_query($con, "update booking set booking_status='cancel' where b_id='$id'");
+        if ($up) {
+            echo "<script>alert('updated successful');</script>";
+        } else {
+            echo "<script>alert('update failed');</script>";
+        }
+    }
+
+
+
+    if(isset($_REQUEST['done'])){
+        $id=$_POST['done'];
+        echo $id;
+        $up = mysqli_query($con, "update booking set payment_status ='done' where b_id='$id'");
         if ($up) {
             echo "<script>alert('updated successful');</script>";
         } else {
@@ -71,7 +84,7 @@ if (isset($_SESSION['aid'])) {
         <br>
 <div class="container">
         <div class="text-center mt-5">
-            <span class="h1 gradient-text">Enter id to check status</span>
+            <span class="h1 gradient-text">Enter Id To Check Payment Status</span>
             <br>
             <form action="" method="post" class="mb-4 button">
                 <input type="text" name="check">
@@ -89,14 +102,15 @@ if (isset($_SESSION['aid'])) {
                                     <div class="col-1">Address</div>
                                     <div class="col-1">booking date</div>
                                     <div class="col-1">tour date</div>
-                                    <div class="col-1">status</div>
+                                    <div class="col-1">booking status</div>
+                                    <div class="col-1">payment</div>
                                    
                                   
             </div>
                     <?php
             if (isset($_POST['sub'])) {
                 $ch = $_POST['check'];
-                $check = mysqli_query($con, "SELECT * FROM booking where customer_id=$ch");
+                $check = mysqli_query($con, "SELECT * FROM booking where customer_id=$ch and payment_status='none'");
                 while($r=mysqli_fetch_array($check)){
                 if ($r) {
 
@@ -131,6 +145,11 @@ if (isset($_SESSION['aid'])) {
                         </div>
                         <div class="col-1">
                         <?php echo $r['status']; ?>
+                        </div>
+                        <div class="col-1">
+                        <form action="" method="post">
+                            <button class="btn confirm px-3" value="<?php echo $r['b_id']; ?>" name="done">Done</button>
+                        </form>
                         </div>
                         
                     </div>

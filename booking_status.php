@@ -84,7 +84,8 @@ $exe=mysqli_query($con,"select * from booking where customer_id='$id' ")
                     <th>Package</th>
                     <th>Contact</th>
                     <th>Address</th>
-                    <th>status</th>
+                    <th>booking status</th>
+                    <th>payment status</th>
                 </tr>
 
                 <?php
@@ -98,6 +99,7 @@ $exe=mysqli_query($con,"select * from booking where customer_id='$id' ")
                     <td><?php echo $row['contact']?></td>
                     <td><?php echo $row['address']?></td>
                     <td><?php echo $row['status']?></td>
+                    <td><?php echo $row['payment_status']?></td>
                 </tr>
 
                 <?php

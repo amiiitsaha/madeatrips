@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Mukta', sans-serif;
+}
+
+body {
+    background-color: #ededed;
+    overflow-x: hidden;
+}
+
+.main-nav {
+    height: 80px;
+}
+
+.main-head {
+    background: rgba(77, 2, 96);
+    box-shadow: 0px 0px 100px black inset;
+    position: sticky;
+    top: 0;
+    z-index: 300;
+}
+
+.first {
+    position: relative;
+}
+
+.first p:nth-child(1) {
+    font-size: 8.75rem;
+}
+
+.first p:nth-child(2) {
+    font-family: 'Delicious Handrawn', cursive;
+    font-weight: 500;
+    font-size: 5.25rem;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.first p:nth-child(3) {
+    position: absolute;
+    top: 200%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1.5rem;
+    padding: 0.175rem 0.125rem;
+    background: linear-gradient(to right, #FFB202, #CD02FF);
+}
+
+
+.first p:nth-child(3) a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.second {
+    box-shadow: 0px 0px 10px #c0c0c0;
+    height: 20vh;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 6rem;
+    overflow: hidden;
+}
+
+.second i {
+    font-size: 1.75rem;
+}
+
+.third {
+    padding: 0.25rem 4.5rem;
+    transition: 0.3s ease;
+}
+
+.third:hover {
+    background: #FFB202;
+}
+
+.forth {
+    background: linear-gradient(to right, #FFB202, #CD02FF);
+    position: relative;
+    top: -2.8rem;
+}
+
+.fifth {
+    border: none;
+
+    outline: none;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.fifth+button {
+    font-weight: 600;
+    border: none;
+    appearance: none;
+}
+
+.fifth+button:hover {
+    background: #FFB202;
+}
+
+.sixth span:nth-child(3) {
+    font-size: 1.5rem;
+    color: #606060;
+}
+
+.seventh {
+    border-radius: 41px;
+background: linear-gradient(225deg, #e3e3e3, #bfbfbf);
+box-shadow:  -27px 27px 54px #999999,
+             27px -27px 54px #ffffff;
+}
+
+.card-seventh {
+    overflow: hidden;
+    border: 2rem;
+    border-radius: 41px;
+    background: linear-gradient(225deg, #f0f0f0, #cacaca);
+    box-shadow: -8px 8px 16px #bababa,
+        8px -8px 16px #ffffff;
+}
+
+.seventh label{ 
+    font-size: 1.125rem;
+    font-weight: 900;
+    
+}
+
+.admin-header {
+    background: linear-gradient(-90deg, #383838, #1e1e1e);
+    height: 100vh;
+    width: 100%;
+}
+
+.admin-header h1 {
+    font-size: 10rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.admin-header h3 {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.header {
+    /* background-image: linear-gradient(to left, rgba(205, 2, 255 ,0.2),rgba(255, 178, 2 ,0.2)),url("images/newdelhi.jpg"); */
+    background-size: 100% 100%;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    top: -2.8rem;
+    padding-top: 4rem;
+    overflow: hidden;
+    box-shadow: 0rem 0rem 100rem #ffb30274 inset;
+}
+
+.header img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    z-index: -300;
+}
+
+.header .images {
+    width: 100%;
+    height: auto;
+
+}
+
+.gradient-text {
+    font-weight: 900;
+    font-size: 4rem;
+    background: -webkit-linear-gradient(#FFB202, #CD02FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card-button {
+    background: linear-gradient(to left, #FFB202, #CD02FF);
+    border: 2rem;
+    padding: 0.25rem 1rem auto;
+}
+
+.button button {
+    background: linear-gradient(to right, #FFB202, #CD02FF);
+    border: 2rem;
+    padding: 0.25rem 1rem;
+}
+
+.menu ul {
+    list-style-type: none;
+    font-size: 20px;
+    margin: 0;
+}
+
+.menu ul li {
+    display: inline;
+    margin-right: 35px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu ul li select {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+.menu ul li select option {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 0px;
+
+}
+
+.info {
+    position: relative;
+}
+
+.info span {
+    cursor: pointer;
+}
+
+.info-content {
+    height: 150px;
+    width: 150px;
+    background-color: gray;
+    color: white;
+    /* text-decoration: underline; */
+    padding-top: 5px;
+    display: none;
+    position: absolute;
+    top: 25px;
+    right: -53px;
+    font-size: medium;
+
+
+}
+
+
+.box {
+    width: 250px;
+    height: 100vh;
+    position: absolute;
+    z-index: 300;
+    top: 0;
+}
+
+.row-cards{
+    color: #fff;
+    font-weight: normal;
+    border-radius: 23px;
+    background: linear-gradient(-145deg, #acabab, #3b3b3b);
+    padding: 1rem 0.5rem;
+  
+}
+
+.row-cards button{
+    background: linear-gradient(-110deg, #ff0404,#ff5050);
+    border-radius: 1rem;
+    border: 2rem;
+    color: #bababa;
+
+}
+.row-cards .confirm{
+    background: linear-gradient(-110deg, #005e27,#00ff59);
+    border-radius: 1rem;
+    border: 2rem;
+    color: #000;
+}
+
+/* .row-cards .Name{
+    width: 39.83px;
+    height: 1rem;
+} */
+
+.row-cards .feed{
+    width: 40%;
+}
+
+.row-cards .btns{
+    gap: 1.25rem;
+}
+
+/* .rows {
+    width: 100%;
+}
+
+.id {
+    width: 20%;
+}
+
+
+.Name {
+    width: 20%;
+}
+
+.contact {
+    width: 20%;
+    text-align: center;
+}
+
+.id {
+    width: 20%;
+    overflow: auto;
+} */

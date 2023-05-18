@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2023 at 04:18 PM
+-- Generation Time: May 18, 2023 at 04:29 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -60,19 +60,17 @@ CREATE TABLE `booking` (
   `status` varchar(32) DEFAULT 'wait for confirmation',
   `customer_id` int(11) DEFAULT NULL,
   `booking_date` varchar(12) DEFAULT NULL,
-  `tour_date` varchar(12) DEFAULT NULL
+  `tour_date` varchar(12) DEFAULT NULL,
+  `payment_status` varchar(32) DEFAULT 'none'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`b_id`, `name`, `family_mem`, `cost`, `package`, `contact`, `address`, `status`, `customer_id`, `booking_date`, `tour_date`) VALUES
-(5, 'Shahid', 4, 8000, 'Gandhi Smiriti', '55667788', 'badarpur', 'confirm', 1, NULL, NULL),
-(6, 'amit', 1, 2000, 'Gandhi Smiriti', '44556677', 'malviya nagar', 'confirm', 1, NULL, NULL),
-(8, 'ashish', 5, 10000, 'Akshardham Temple', '99556664', 'sangam vihar gali no12 ', 'cancel', 7, NULL, NULL),
-(12, 'ashish', 1, 2000, 'Jama Masjid', '99556664', 'sangam vihar', 'wait for confirmation', 7, '11/05/23', '2023-05-13'),
-(13, 'ashish', 1, 2000, 'Purana Quila', '99556664', 'sangam vihar', 'wait for confirmation', 7, '11/05/23', '2023-05-19');
+INSERT INTO `booking` (`b_id`, `name`, `family_mem`, `cost`, `package`, `contact`, `address`, `status`, `customer_id`, `booking_date`, `tour_date`, `payment_status`) VALUES
+(12, 'ashish', 1, 2000, 'Jama Masjid', '99556664', 'sangam vihar', 'wait for confirmation', 7, '11/05/23', '2023-05-13', 'done'),
+(13, 'ashish', 1, 2000, 'Purana Quila', '99556664', 'sangam vihar', 'wait for confirmation', 7, '11/05/23', '2023-05-19', 'none');
 
 -- --------------------------------------------------------
 

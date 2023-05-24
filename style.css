@@ -113,6 +113,37 @@ body {
     color: #606060;
 }
 
+#toggle-bar{
+    position: absolute;
+    top: 0px;
+    left:-30px;
+    height: 100vh;
+    width: 0px;
+    transition: 0.5s;
+    overflow: hidden;
+    z-index:310;
+    
+
+}
+#toggle-bar ul{
+    background: linear-gradient(-90deg, #383838, #1e1e1e);
+    height: 100vh;
+
+    list-style-type: none;
+}
+#toggle-bar ul li{
+    margin-top: 40px;
+   
+}
+#toggle-bar ul a{
+    text-decoration: none;
+    font-size: 2.1rem;
+    background: -webkit-linear-gradient(#FFB202, #CD02FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
 .seventh {
     border-radius: 41px;
 background: linear-gradient(225deg, #e3e3e3, #bfbfbf);
@@ -121,12 +152,14 @@ box-shadow:  -27px 27px 54px #999999,
 }
 
 .card-seventh {
-    overflow: hidden;
+    /* overflow: hidden; */
     border: 2rem;
     border-radius: 41px;
     background: linear-gradient(225deg, #f0f0f0, #cacaca);
     box-shadow: -8px 8px 16px #bababa,
         8px -8px 16px #ffffff;
+    height:700px ;
+    position: relative;
 }
 
 .seventh label{ 
@@ -140,7 +173,11 @@ box-shadow:  -27px 27px 54px #999999,
     height: 100vh;
     width: 100%;
 }
+.bookingtable{
+    overflow-x: scroll;
 
+
+}
 .admin-header h1 {
     font-size: 10rem;
     position: absolute;
@@ -164,7 +201,7 @@ box-shadow:  -27px 27px 54px #999999,
     top: -2.8rem;
     padding-top: 4rem;
     overflow: hidden;
-    box-shadow: 0rem 0rem 100rem #ffb30274 inset;
+    
 }
 
 .header img {
@@ -177,7 +214,7 @@ box-shadow:  -27px 27px 54px #999999,
 
 .header .images {
     width: 100%;
-    height: auto;
+    height: 100vh;
 
 }
 
@@ -193,6 +230,8 @@ box-shadow:  -27px 27px 54px #999999,
     background: linear-gradient(to left, #FFB202, #CD02FF);
     border: 2rem;
     padding: 0.25rem 1rem auto;
+    position: absolute;
+    bottom: 10px;
 }
 
 .button button {
@@ -322,3 +361,23 @@ box-shadow:  -27px 27px 54px #999999,
     width: 20%;
     overflow: auto;
 } */
+@media  (max-width:830px) {
+    .forth {
+        position: relative;
+        top: -37.2rem;
+    }
+    .feedbody{
+        overflow-x:scroll;
+       
+    }
+    .feedbody table{
+        width: 536px;
+    }
+}
+
+@media  (max-width:380px) {
+    .forth {
+        position: relative;
+        top: -23.2rem;
+    }
+}

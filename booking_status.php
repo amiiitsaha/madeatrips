@@ -67,16 +67,42 @@ $exe=mysqli_query($con,"select * from booking where customer_id='$id' ")
     </div>
 </div>
 
+    <!-- toggle bar -->
+                <div id="toggle-bar">
+                <ul>
+                <li> 
+                    <i class="bi bi-person-circle text-light h4 ">
+                        <span class="text-light" style="font-size: 20px;">
+                        <?php
+
+                        if (isset($_SESSION['id'])) {
+                            echo $_SESSION['name'];
+                        }
+
+                        ?> 
+                        
+                    </span>    
+                </i></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="feedback.php">Feedback</a></li>
+                    <li><a href="booking_status.php">Booking status</a></li>
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="registration.php">sign up</a></li>
+                </ul>
+            </div>
+
+
+
 
 <!-- booking_status  -->
     <div class="container">
 
     <p class="text-center h1 mt-4 gradient-text">Your Booking Status</p>
     <hr>
-        <div class="row justify-content-center mt-5 ">
+        <div class="row justify-content-center mt-5 bookingtable">
             <div class="col">
             
-            <table class="table" border="2">
+            <table class="table table-bordered table-dark table-striped">
                 <tr>
                     <th>Name</th>
                     <th>Family member</th>

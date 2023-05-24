@@ -29,19 +29,8 @@ bar.addEventListener('click', function(){
 
 let slide = document.querySelector('#box');
 
-side_bar = () =>{
-
-}
 
 
-// function getcost(){
-//     console.log(booking.cost.value);
-//     var d=booking.cost.value;
-//     return d;
-// }
-// var co=getcost();
-// // console.log(cost);
-// console.log(co);
 
 
 function change(cost){
@@ -52,4 +41,18 @@ function change(cost){
     booking.cost.value=cost*member;
     console.log(member);
 }
+
+
+var toggle=0;
+function side_bar(){
+    console.log("hello");
+    if(toggle == 0){
+    document.getElementById("toggle-bar").style.width="300px";
+    toggle++;
+    }else{
+    document.getElementById("toggle-bar").style.width="0px";
+        toggle--;
+    }
+}
+
 

@@ -11,7 +11,7 @@ if (isset($_SESSION['aid'])) {
 
     if (isset($_REQUEST['confirm'])) {
         $id = $_POST['confirm'];
-        $up = mysqli_query($con, "update booking set booking_status='confirm' where b_id='$id'");
+        $up = mysqli_query($con, "update booking set status='confirm' where b_id='$id'");
         if ($up) {
             echo "<script>alert('updated successful');</script>";
         } else {
@@ -20,7 +20,7 @@ if (isset($_SESSION['aid'])) {
     }
     if (isset($_REQUEST['cancel'])) {
         $id = $_POST['cancel'];
-        $up = mysqli_query($con, "update booking set booking_status='cancel' where b_id='$id'");
+        $up = mysqli_query($con, "update booking set status='cancel' where b_id='$id'");
         if ($up) {
             echo "<script>alert('updated successful');</script>";
         } else {
@@ -30,8 +30,8 @@ if (isset($_SESSION['aid'])) {
 
 
 
-    if(isset($_REQUEST['done'])){
-        $id=$_POST['done'];
+    if (isset($_REQUEST['done'])) {
+        $id = $_POST['done'];
         echo $id;
         $up = mysqli_query($con, "update booking set payment_status ='done' where b_id='$id'");
         if ($up) {
@@ -63,7 +63,7 @@ if (isset($_SESSION['aid'])) {
         <div class="main-head">
             <div class="container">
                 <div class="row pt-3 justify-content-around align-items-center main-nav">
-                    <div class="col-lg-2">LOGO</div>
+
                     <div class="col-lg-7 menu text-center d-none d-lg-block">
                         <ul>
                             <li><a href="adminindex.php">Home</a></li>
@@ -73,169 +73,179 @@ if (isset($_SESSION['aid'])) {
                             <li><a href="logout.php">Logout</a></li>
                         </ul>
                     </div>
-                    <d class="col-lg-3 text-center ">
-                        <i class="bi bi-person-circle text-light h4"></i>
-                        <span class="text-light lead ms-2"> <?php echo $_SESSION['aname']; ?></span>
-                    </d>
+                    <div class="col-lg-3 col-md-8 col-sm-10 text-end ">
+                        <div class="d-none d-lg-block">
+                            <i class="bi bi-person-circle text-light h4"></i>
+                            <span class="text-light lead ms-2"> <?php echo $_SESSION['aname']; ?></span>
+                        </div>
+                        <div class="d-lg-none " onclick="side_bar()">
+                            <i class="bi bi-list text-light" style="font-size: 40px;"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+
 
         <br>
-<div class="container">
-        <div class="text-center mt-5">
-            <span class="h1 gradient-text">Enter Id To Check Payment Status</span>
-            <br>
-            <form action="" method="post" class="mb-4 button">
-                <input type="text" name="check">
-                <button class="btn btn-primary px-3 b" value="sub" name="sub">Check</button>
-            </form>
-        </div>
-        <div class="main-table ">
-        <div class="row justify-content-between">
-                                    <div class="col-1">Id</div>
-                                    <div class="col-1">Name</div>
-                                    <div class="col-1">Family Member</div>
-                                    <div class="col-1">Cost</div>
-                                    <div class="col-1">Packages</div>
-                                    <div class="col-1">Contact</div>
-                                    <div class="col-1">Address</div>
-                                    <div class="col-1">booking date</div>
-                                    <div class="col-1">tour date</div>
-                                    <div class="col-1">booking status</div>
-                                    <div class="col-1">payment</div>
-                                   
-                                  
+        <br>
+        <div class="container">
+            <div class="text-center mt-5">
+                <span class="h1 gradient-text">Enter Id To Check Payment Status</span>
+                <br>
+                <form action="" method="post" class="mb-4 button">
+                    <input type="text" name="check">
+                    <button class="btn btn-primary px-3 b" value="sub" name="sub">Check</button>
+                </form>
             </div>
-                    <?php
-            if (isset($_POST['sub'])) {
-                $ch = $_POST['check'];
-                $check = mysqli_query($con, "SELECT * FROM booking where customer_id=$ch and payment_status='none'");
-                while($r=mysqli_fetch_array($check)){
-                if ($r) {
+            <div class="feedbody ">
+                <div style="overflow-x: scroll;">
+                <table  class="table table-bordered table-dark table-striped table-hover" style="width:1296px">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Family Member</th>
+                        <th>Cost</th>
+                        <th>Packages</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>Booking date</th>
+                        <th>Tour Date</th>
+                        <th>Boking status</th>
+                        <th>Payment</th>
+                    </tr>
 
-            ?>
-                    <div class="row-cards row justify-content-between ">
-                        <div class="col-1">
-                        <?php echo $r['b_id']; ?>
-                        </div>
-                        <div class="col-1">
-                        <?php echo $r['name']; ?>
-                        </div>
-                        <div class="col-1">
-                        <?php echo $r['family_mem']; ?>
-                        </div>
-                        <div class="col-1">
-                        <?php echo $r['cost']; ?>
-                        </div>
-                        <div class="col-1">
-                        <?php echo $r['package']; ?>
-                        </div>
-                        <div class="col-1">
-                        <?php echo $r['contact']; ?>
-                        </div>
-                        <div class="col-1">
-                        <?php echo $r['address']; ?>
-                        </div>
-                        <div class="col-1">
-                        <?php echo $r['booking_date']; ?>
-                        </div>
-                        <div class="col-1">
-                        <?php echo $r['tour_date']; ?>
-                        </div>
-                        <div class="col-1">
-                        <?php echo $r['status']; ?>
-                        </div>
-                        <div class="col-1">
-                        <form action="" method="post">
-                            <button class="btn confirm px-3" value="<?php echo $r['b_id']; ?>" name="done">Done</button>
-                        </form>
-                        </div>
-                        
-                    </div>
+
+
                     <?php
-                }
-            }
-        }
-            ?>
+                    if (isset($_POST['sub'])) {
+                        $ch = $_POST['check'];
+                        $check = mysqli_query($con, "SELECT * FROM booking where customer_id=$ch and payment_status='none'");
+                        while ($r = mysqli_fetch_array($check)) {
+                            if ($r) {
+
+                    ?>
+
+
+                                <tr>
+                                    <td><?php echo $r['b_id']; ?></td>
+                                    <td><?php echo $r['name']; ?></td>
+                                    <td><?php echo $r['family_mem']; ?></td>
+                                    <td><?php echo $r['cost']; ?></td>
+                                    <td><?php echo $r['package']; ?></td>
+                                    <td><?php echo $r['contact']; ?></td>
+                                    <td><?php echo $r['address']; ?></td>
+                                    <td><?php echo $r['booking_date']; ?></td>
+                                    <td><?php echo $r['tour_date']; ?></td>
+                                    <td><?php echo $r['status']; ?></td>
+                                    <td>
+                                        <form action="" method="post">
+                                            <button class="btn btn-success confirm px-3" value="<?php echo $r['b_id']; ?>" name="done">Done</button>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                    <?php
+                            }
+                        }
+                    }
+                    ?>
+                </table>
                 </div>
+            </div>
         </div>
         <br>
         <div class="container">
             <div class="text-center h1 my-2 gradient-text">Customer Booking</div>
         </div>
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col">
-                    <div class="main-table ">
-                                
-                                <div class="row justify-content-between">
-                                    <div class="col-1">Id</div>
-                                    <div class="col-1">Name</div>
-                                    <div class="col-1">Family Member</div>
-                                    <div class="col-1">Cost</div>
-                                    <div class="col-1">Packages</div>
-                                    <div class="col-1">Contact</div>
-                                    <div class="col-1">Address</div>
-                                    <div class="col-1">booking date</div>
-                                    <div class="col-1">tour date</div>
-                                    <div class="col-1">Confirm</div>
-                                    <div class="col-1">Cancel</div>
-                                  
-                                </div>
 
-                                <?php
-                                    $exe = mysqli_query($con, "SELECT * FROM booking where status='wait for confirmation'");
-                                    while ($row = mysqli_fetch_array($exe)) {
-            
-                                    ?>
-                                <div class="row-cards row justify-content-between ">
-                                    <div class=" col-1">
-                                    <?php echo $row['b_id']; ?>
-                                    </div>
-                                    <div class="col-1">
-                                    <?php echo $row['name']; ?>
-                                    </div>
-                                    <div class=" col-1">
-                                    <?php echo $row['family_mem']; ?>
-                                    </div>
-                                    <div class=" col-1">
-                                    <?php echo $row['cost']; ?>
-                                    </div>
-                                    <div class=" col-1">
-                                    <?php echo $row['package']; ?>
-                                    </div>
-                                    <div class=" col-1">
-                                    <?php echo $row['contact']; ?>
-                                    </div>
-                                    <div class=" col-1">
-                                    <?php echo $row['address']; ?>
-                                    </div>
-                                    <div class=" col-1">
-                                    <?php echo $row['booking_date']; ?>
-                                    </div>
-                                    <div class=" col-1">
-                                    <?php echo $row['tour_date']; ?>
-                                    </div>
-                                    <form action="" method="post" class="col-1">
-                                                    <button class="btn confirm px-3" value="<?php echo $row['b_id']; ?>" name="confirm">Confirm</button>
-                                    </form>
-                                    <form action="" method="post" class="col-1">
-                                                                <button class="btn btn-danger px-3" value="<?php echo $row['b_id']; ?>" name="cancel">Cancel</button>
-                                                            </form>
-                                    </div>
-                                </div>
-                                <?php
-                                    }
-                                    ?>
-                            </div>
-                    </div>
-                </div>
+            <div class="feedbody">
+
+                <table  class="table table-bordered table-dark table-striped table-hover" style="width:1296px">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nmae</th>
+                        <th>Family Member</th>
+                        <th>Cost</th>
+                        <th>Packages</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>Booking date</th>
+                        <th>Tour Date</th>
+                        <th>Confirm</th>
+                        <th>Cancel</th>
+                    </tr>
+
+
+                    <?php
+                    $exe = mysqli_query($con, "SELECT * FROM booking where status='wait for confirmation'");
+                    while ($row = mysqli_fetch_array($exe)) {
+
+                    ?>
+
+
+
+                        <tr>
+                            <td><?php echo $row['b_id']; ?></td>
+                            <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row['family_mem']; ?></td>
+                            <td><?php echo $row['cost']; ?></td>
+                            <td><?php echo $row['package']; ?></td>
+                            <td><?php echo $row['contact']; ?></td>
+                            <td><?php echo $row['address']; ?></td>
+                            <td><?php echo $row['booking_date']; ?></td>
+                            <td><?php echo $row['tour_date']; ?></td>
+                            <td>
+                                <form action="" method="post" class="col-1">
+                                    <button class="btn confirm btn-success px-3" value="<?php echo $row['b_id']; ?>" name="confirm">Confirm</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="" method="post" class="col-1">
+                                    <button class="btn btn-danger px-3" value="<?php echo $row['b_id']; ?>" name="cancel">Cancel</button>
+                                </form>
+                            </td>
+                        </tr>
+
+                    <?php
+                    }
+                    ?>
+                </table>
             </div>
+        </div>
+
+
         </div>
         <br>
 
+        <!-- toggle-bar  -->
+        <div id="toggle-bar" class="px-3">
 
+            <ul>
+                <li>
+                    <i class="bi bi-person-circle text-light h4 "></i>
+                    <span class="text-light" style="font-size: 20px;">
+                        <?php
+                        echo $_SESSION['aname'];
+
+                        ?>
+
+                    </span>
+                </li>
+                <li><a href="adminindex.php">Home</a></li>
+                <li><a href="adminfeedback.php">Feedback</a></li>
+                <li><a href="adminbooking.php">Booking</a></li>
+                <li><a href="adminpackages.php">packages</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </div>
+        <script>
+            <?php
+            include "adminscript.js";
+            ?>
+        </script>
     </body>
 
     </html>

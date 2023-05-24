@@ -48,6 +48,8 @@ if($exe){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking</title>
     <!-- bootstrap link  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <style>
@@ -57,8 +59,91 @@ if($exe){
     </style>
 </head>
 <body>
+
+<div class="main-head">
+        <!-- <div class="box bg-warning text-end d-lg-none"></div> -->
+        <div class="container">
+            <div class="row  justify-content-around align-items-center main-nav ">
+
+                <div class="col-2" style="font-size: 20px;">LOGO</div>
+                <div class="col-lg-7 menu text-center d-none d-lg-block">
+                    <ul>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="feedback.php">Feedback</a></li>
+                        <li><a href="booking_status.php">Booking Status</a></li>
+                        <li>
+                            <span class="info">
+                                <span id="bar" class="text-light">Join Us</span>
+                                <div class="info-content">
+                                    <div> <a href="login.php" class="text-light">Login</a></div>
+                                    <hr>
+                                    <div><a href="registration.php" class="text-light">signup</a></div>
+                                    <!-- <hr> -->
+                                    <!-- <div>  <a href="admin.php" class="text-dark">admin</a></div> -->
+                                    <hr>
+                                    <div><a href="logout.php" class="text-light">Logout</a></div>
+                                </div>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- toggle bar -->
+            <div id="toggle-bar">
+                <ul>
+                <li> 
+                    <i class="bi bi-person-circle text-light h4 ">
+                        <span class="text-light" style="font-size: 20px;">
+                        <?php
+
+                        if (isset($_SESSION['id'])) {
+                            echo $_SESSION['name'];
+                        }
+
+                        ?> 
+                        
+                    </span>    
+                </i></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="feedback.php">Feedback</a></li>
+                    <li><a href="booking_status.php">Booking status</a></li>
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="registration.php">sign up</a></li>
+                </ul>
+            </div>
+
+
+
+                <div class="col-lg-3 text-end d-none d-lg-block" >
+                <i class="bi bi-person-circle text-light h4 "></i>
+
+                <span class="text-light" style="font-size: 20px;">
+                        <?php
+
+                        if (isset($_SESSION['id'])) {
+                            echo $_SESSION['name'];
+                        }
+
+                        ?> 
+                        
+                    </span>    
+                    
+                </div>
+
+                <div class="col-4 text-end d-lg-none  " onclick="side_bar()">
+                    <h1 class=""><i class="bi bi-list text-light" ></i></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br>
+<br>
+
+
+
 <div class="container"> 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center px-4">
         <div class="col-lg-6 col-sm-12 shadow mt-4 p-3 seventh">
             <p class="display-6 text-center gradient-text">booking form</p>
     

@@ -26,7 +26,7 @@ if(isset($_SESSION['aid'])){
 <div class="admin-header">
         <div class="container">
             <div class="row pt-3 justify-content-around align-items-center">
-                <div class="col-lg-2">LOGO</div>
+               
                 <div class="col-lg-7 menu text-center d-none d-lg-block">
                     <ul>
                         <li><a href="adminindex.php">Home</a></li>
@@ -36,16 +36,50 @@ if(isset($_SESSION['aid'])){
                         <li><a href="logout.php">Logout</a></li>
                     </ul>
                 </div>
-                <d class="col-lg-3 text-center ">
+                <div class="col-lg-3 col-md-8 col-sm-10 text-end ">
+                <div class="d-none d-lg-block">    
                 <i class="bi bi-person-circle text-light h4"></i>
                  <span class="text-light lead ms-2"> <?php echo $_SESSION['aname'];?></span>
-                </d>
+                </div>
+                <div class="d-lg-none " onclick="side_bar()">
+                    <i class="bi bi-list text-light" style="font-size: 40px;"></i>
+                </div>
+                </div>
+                
+                
             </div>
+
             <h1 class="gradient-text">Admin</h1>
             <h3 class="gradient-text">Welcome <?php echo $_SESSION['aname']; ?></h3>
         </div>
     </div>
 
+    <!-- toggle-bar  -->
+    <div id="toggle-bar" class="px-3">
+               
+                <ul>
+                    <li> 
+                    <i class="bi bi-person-circle text-light h4 "></i>
+                        <span class="text-light" style="font-size: 20px;">
+                        <?php
+                            echo $_SESSION['aname'];
+
+                        ?> 
+                        
+                    </span>    
+                </li>
+                    <li><a href="adminindex.php">Home</a></li>
+                    <li><a href="adminfeedback.php">Feedback</a></li>
+                    <li><a href="adminbooking.php">Booking</a></li>
+                    <li><a href="adminpackages.php">packages</a></li>
+                    <li><a href="logout.php">Logout</a></li>
+                </ul>
+            </div>
+ <script>
+        <?php
+        include "adminscript.js";
+        ?>
+    </script>
 </body>
 </html>
 <?php

@@ -36,7 +36,7 @@ if(isset($_REQUEST['submit'])){
 <body>
 
 <div class="container"> 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mx-4">
         <div class="col-lg-6 col-sm-12 shadow mt-4 p-3 seventh">
             <p class="display-6 text-center gradient-text">Registration form</p>
     

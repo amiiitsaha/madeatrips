@@ -31,11 +31,11 @@ $exe = mysqli_query($con, "SELECT * FROM packages");
 
 <body>
     <div class="main-head">
-        <!-- <div class="box bg-warning text-end d-lg-none"></div> -->
+       
         <div class="container">
             <div class="row  justify-content-around align-items-center main-nav ">
 
-                <div class="col-2" style="font-size: 20px;">LOGO</div>
+               
                 <div class="col-lg-7 menu text-center d-none d-lg-block">
                     <ul>
                         <li><a href="index.php">Home</a></li>
@@ -48,8 +48,7 @@ $exe = mysqli_query($con, "SELECT * FROM packages");
                                     <div> <a href="login.php" class="text-light">Login</a></div>
                                     <hr>
                                     <div><a href="registration.php" class="text-light">signup</a></div>
-                                    <!-- <hr> -->
-                                    <!-- <div>  <a href="admin.php" class="text-dark">admin</a></div> -->
+                                 
                                     <hr>
                                     <div><a href="logout.php" class="text-light">Logout</a></div>
                                 </div>
@@ -57,7 +56,36 @@ $exe = mysqli_query($con, "SELECT * FROM packages");
                         </li>
                     </ul>
                 </div>
+
+                <!-- toggle bar -->
+            <div id="toggle-bar">
+               
+                <ul>
+                    <li> 
+                    <i class="bi bi-person-circle text-light h4 ">
+                        <span class="text-light" style="font-size: 20px;">
+                        <?php
+
+                        if (isset($_SESSION['id'])) {
+                            echo $_SESSION['name'];
+                        }
+
+                        ?> 
+                        
+                    </span>    
+                </i></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="feedback.php">Feedback</a></li>
+                    <li><a href="booking_status.php">Booking status</a></li>
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="registration.php">sign up</a></li>
+                </ul>
+            </div>
+
+
+
                 <div class="col-lg-3 text-end d-none d-lg-block" >
+                <i class="bi bi-person-circle text-light h4 "></i>
                 <span class="text-light" style="font-size: 20px;">
                         <?php
 
@@ -68,16 +96,16 @@ $exe = mysqli_query($con, "SELECT * FROM packages");
                         ?> 
                         
                     </span>    
-                <i class="bi bi-person-circle text-light h4 "></i>
                     
                 </div>
 
-                <div class="col-4 text-end d-lg-none  ">
-                    <h1 class=""><i class="bi bi-list text-light" onclick="side_bar()"></i></h1>
+                <div class="col-4 text-end d-lg-none  " onclick="side_bar()">
+                    <h1 class=""><i class="bi bi-list text-light" ></i></h1>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
+
     <div class="header">
         <div class="images">
         <img src="images\SafdarJang Tomb.jpg" class="imgs" alt="">
@@ -100,27 +128,7 @@ $exe = mysqli_query($con, "SELECT * FROM packages");
                 <p class="text-center"><a href="#package" class="px-5 pt-2 ">Book</a href="#package"></p>  
             </div>
         </div>
-        <div class="d-flex justify-content-center align-items-start w-50 second">
-            <div class="third d-flex justify-content-center flex-column align-items-center">
-            <i class="bi bi-airplane-engines"></i>
-            <p class="text-center">Plane</p>
-            </div>
-            <div class="third d-flex justify-content-center flex-column align-items-center">
-            <i class="bi bi-train-freight-front"></i>
-            <p class="text-center">Train</p>
-            </div>
-            <div class="third d-flex justify-content-center flex-column align-items-center">
-            <i class="bi bi-car-front-fill"></i>
-            <p class="text-center">Car</p>
-            </div>
-            <div class="third d-flex justify-content-center flex-column align-items-center">
-            <i class="bi bi-bicycle"></i>
-            <p class="text-center">Bike</p>
-            </div>
-            
-            
-            
-        </div>
+
     </div>
     
     
@@ -160,7 +168,7 @@ $exe = mysqli_query($con, "SELECT * FROM packages");
             
             ?>
 
-    <div class="forcard col-lg-4 col-md-5 col-sm-10 mb-4">
+    <div class="forcard col-lg-4 col-md-5 col-sm-10 mb-4" style="height:600px;">
                     <div class="card card-seventh">
                         <img src="images/<?php echo $r['name']; ?>.jpg" alt="" class="card-img-top" style="height:250px;">
                         <div class="card-body" data-aos="fade-up">
@@ -170,7 +178,7 @@ $exe = mysqli_query($con, "SELECT * FROM packages");
                             <br>
                             <div class="row justify-content-between align-items-center">
                                 <a href="<?php echo "booking.php?c=" . $r['id']; ?>" class="btn mx-2 my-3 col-4 card-button">Book</a>
-                                <span class="col-3 text-darker fw-bold"><?php echo $r['cost']; ?></span>
+                                <span class="col-3 text-darker fw-bold" style="position: absolute;bottom:25px;right:4px;"><?php echo $r['cost']; ?></span>
                             </div>
                         </div>
                     </div>
@@ -184,8 +192,8 @@ $exe = mysqli_query($con, "SELECT * FROM packages");
 
 
             ?>
-                <div class="forcard col-lg-4 col-md-5 col-sm-10 mb-4">
-                    <div class="card card-seventh">
+                <div class=" col-lg-4 col-md-6 col-sm-10 mb-4" >
+                    <div class="card card-seventh" >
                         <img src="images/<?php echo $row['name']; ?>.jpg" alt="" class="card-img-top" style="height:250px;">
                         <div class="card-body" data-aos="fade-up">
                             <h5 class="card-title"><?php echo $row['name']; ?></h5>
@@ -195,7 +203,7 @@ $exe = mysqli_query($con, "SELECT * FROM packages");
                             <br>
                             <div class="row justify-content-between align-items-center">
                                 <a href="<?php echo "booking.php?c=" . $row['id']; ?>" class="btn mx-2 my-3 col-4 card-button">Book</a>
-                                <span class="col-3 text-darker fw-bold">Rs <?php echo $row['cost']; ?></span>
+                                <span class="col-3 text-darker fw-bold" style="position: absolute;bottom:25px;right:4px;">Rs <?php echo $row['cost']; ?></span>
                             </div>
                         </div>
                     </div>
@@ -269,7 +277,7 @@ $exe = mysqli_query($con, "SELECT * FROM packages");
         </div>
     </div>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
+<script>
   AOS.init();
 </script>
     <script>

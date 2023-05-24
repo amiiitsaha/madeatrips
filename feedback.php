@@ -80,11 +80,36 @@ if (isset($_REQUEST['sub'])) {
         </div>
     </div>
 
+ <!-- toogle bar -->
+    <div id="toggle-bar">
+                <ul>
+                <li> 
+                    <i class="bi bi-person-circle text-light h4 ">
+                        <span class="text-light" style="font-size: 20px;">
+                        <?php
+
+                        if (isset($_SESSION['id'])) {
+                            echo $_SESSION['name'];
+                        }
+
+                        ?> 
+                        
+                    </span>    
+                </i></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="feedback.php">Feedback</a></li>
+                    <li><a href="booking_status.php">Booking status</a></li>
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="registration.php">sign up</a></li>
+                </ul>
+            </div>
+
+
 
     <!-- feedback  -->
 
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center px-4">
             <div class="col-lg-6 col-sm-12 shadow mt-4 p-3 seventh">
                 <p class="display-5 text-center gradient-text">Feedback form</p>
                 <br>
@@ -119,7 +144,11 @@ if (isset($_REQUEST['sub'])) {
             </div>
         </div>
     </div>
-
+    <script>
+        <?php
+        include "script.js";
+        ?>
+    </script>
 </body>
 
 </html>
